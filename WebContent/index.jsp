@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>练习</title>
+<title>练习1</title>
 <style type="text/css">
 	*{
 		margin: 0px;
