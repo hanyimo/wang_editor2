@@ -14,10 +14,6 @@
 		padding:50px 0px 0px 250px;
 		background-color: #f3fcff;
 	}
-	table{
-		
-		
-	}
 	.a{
 		height:30px;
 	}

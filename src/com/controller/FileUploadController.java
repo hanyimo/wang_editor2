@@ -25,44 +25,44 @@ import com.alibaba.fastjson.JSON;
 public class FileUploadController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ÉèÖÃÏàÓ¦Êı¾İÄÚÈİMIMEÀàĞÍ¼°±àÂë
+		// è®¾ç½®ç›¸åº”æ•°æ®å†…å®¹MIMEç±»å‹åŠç¼–ç 
 		response.setContentType("application/json;charset=utf-8");
-		// ÉèÖÃÏàÓ¦Êı¾İÈİÆ÷
+		// è®¾ç½®ç›¸åº”æ•°æ®å®¹å™¨
 		List<String> urls = new ArrayList<>();
-		// »ñÈ¡ÏàÓ¦Êä³öÁ÷
+		// è·å–ç›¸åº”è¾“å‡ºæµ
 		PrintWriter out = response.getWriter();
 		try {
-			//ÉèÖÃÎÄ¼şÉÏ´«ºóµÄ´æ´¢Î»ÖÃ(ÏîÄ¿ÖĞ±ØĞëÏÈ´æÔÚ)
+			//è®¾ç½®æ–‡ä»¶ä¸Šä¼ åçš„å­˜å‚¨ä½ç½®(é¡¹ç›®ä¸­å¿…é¡»å…ˆå­˜åœ¨)
 			String realPath = getServletContext().getRealPath("/static/file");
-			// Îª»ùÓÚ´ÅÅÌµÄÎÄ¼şÏî´´½¨DiskFileItemFactory¶ÔÏó
+			// ä¸ºåŸºäºç£ç›˜çš„æ–‡ä»¶é¡¹åˆ›å»ºDiskFileItemFactoryå¯¹è±¡
 			DiskFileItemFactory factory = new DiskFileItemFactory();
-			// ÅäÖÃ´æ´¢¿â£¨ÒÔÈ·±£Ê¹ÓÃ°²È«µÄÁÙÊ±Î»ÖÃ£©
+			// é…ç½®å­˜å‚¨åº“ï¼ˆä»¥ç¡®ä¿ä½¿ç”¨å®‰å…¨çš„ä¸´æ—¶ä½ç½®ï¼‰
 			ServletContext servletContext = this.getServletConfig().getServletContext();
 			File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 			factory.setRepository(repository);
-			// ´´½¨ĞÂµÄÎÄ¼şÉÏÔØ´¦Àí³ÌĞò
+			// åˆ›å»ºæ–°çš„æ–‡ä»¶ä¸Šè½½å¤„ç†ç¨‹åº
 			ServletFileUpload upload = new ServletFileUpload(factory);
-			//ÉèÖÃ±£´æÎÄ¼şµÄ±àÂë·½Ê½£¬
+			//è®¾ç½®ä¿å­˜æ–‡ä»¶çš„ç¼–ç æ–¹å¼ï¼Œ
 			upload.setHeaderEncoding("UTF-8");
-			// ·ÖÎöÇëÇó
+			// åˆ†æè¯·æ±‚
 			List<FileItem> items = upload.parseRequest(request);
-			// ´¦ÀíÉÏ´«µÄÏîÄ¿
+			// å¤„ç†ä¸Šä¼ çš„é¡¹ç›®
 			Iterator<FileItem> iter = items.iterator();
 			while (iter.hasNext()) {
 			    FileItem item = iter.next();
-			    String fileName = item.getName();	// »ñÈ¡ÎÄ¼şÃû
-			    String rand = UUID.randomUUID().toString();// »ñÈ¡Ò»¸öUUIDÖµ
-			    // ÉÏ´«ÎÄ¼ş
+			    String fileName = item.getName();	// è·å–æ–‡ä»¶å
+			    String rand = UUID.randomUUID().toString();// è·å–ä¸€ä¸ªUUIDå€¼
+			    // ä¸Šä¼ æ–‡ä»¶
 			    fileName = rand+fileName.substring(fileName.lastIndexOf("."));
 			    File uploadedFile = new File(realPath,fileName);
 			    item.write(uploadedFile);
-			    // °ÑÍ¼Æ¬Ãû³ÆÌí¼Óµ½urlsÖĞ
+			    // æŠŠå›¾ç‰‡åç§°æ·»åŠ åˆ°urlsä¸­
 			    urls.add(fileName);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// ·µ»ØJSONÊı¾İ
+		// è¿”å›JSONæ•°æ®
 		out.write(JSON.toJSONString(urls));
 		out.flush();
 		out.close();
