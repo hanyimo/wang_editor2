@@ -24,56 +24,58 @@
 </head>
 <body>
 	<div id="all">
-		<table border="1px solid black">
-			<tr class="a">
-				<td> 招聘对象 </td>
-				<td>
-					<input type="text" value="行业客户经理">
-				</td>
-			</tr>
-			<tr class="a">
-				<td> 招聘人数 </td>
-				<td>
-					<input type="text" value="2">人
-				</td>
-			</tr>
-			<tr class="a">
-				<td> 工作地点 </td>
-				<td>
-					<input type="text" value="上海">
-				</td>
-			</tr>
-			<tr class="a">
-				<td> 工资待遇 </td>
-				<td>
-					<input type="text" value="面议">
-				</td>
-			</tr>
-			<tr class="a">
-				<td> 发布日期 </td>
-				<td>
-					<input type="text" value="2005-12-18">
-				</td>
-			</tr>
-			<tr class="a">
-				<td> 有效期限 </td>
-				<td>
-					<input type="text" value="20">天
-				</td>
-			</tr>
-			<tr>
-				<td> 招聘要求 </td>
-				<td id="editor">
-					<p>劈里啪啦劈里啪啦劈里啪啦劈里啪啦劈里啪啦劈里啪啦劈里啪啦</p>
-				</td>
-			</tr>
-			<tr class="a" >
-				<td colspan="2" id="b">
-					<button>确定</button>
-					<button>取消</button>
-				</td>
-			</tr>
-		</table>
+		<form action="" target="post">
+			<table border="1px solid black">
+				<tr class="a">
+					<td> 招聘对象 </td>
+					<td>
+						<input type="text" value="行业客户经理">
+					</td>
+				</tr>
+				<tr class="a">
+					<td> 招聘人数 </td>
+					<td>
+						<input type="text" value="2">人
+					</td>
+				</tr>
+				<tr class="a">
+					<td> 工作地点 </td>
+					<td>
+						<input type="text" value="上海">
+					</td>
+				</tr>
+				<tr class="a">
+					<td> 工资待遇 </td>
+					<td>
+						<input type="text" value="面议">
+					</td>
+				</tr>
+				<tr class="a">
+					<td> 发布日期 </td>
+					<td>
+						<input type="date" value="2005-12-18">
+					</td>
+				</tr>
+				<tr class="a">
+					<td> 有效期限 </td>
+					<td>
+						<input type="text" value="20">天
+					</td>
+				</tr>
+				<tr>
+					<td> 招聘要求 </td>
+					<td id="editor">
+						<p>劈里啪啦劈里啪啦劈里啪啦劈里啪啦劈里啪啦劈里啪啦劈里啪啦</p>
+					</td>
+				</tr>
+				<tr class="a" >
+					<td colspan="2" id="b">
+						<input type="submit" value="确定" >&nbsp;
+						<input type="submit" value="取消" >
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 	<script src="${pageContext.request.contextPath}/static/js/wangEditor.min.js"></script>
 	<script >
